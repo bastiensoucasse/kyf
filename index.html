@@ -1,0 +1,371 @@
+<!doctype html>
+<html>
+
+<head lang="fr-fr">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYF</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <style>*{box-sizing:border-box}*:focus{outline:none}body{background:#111;color:#fff;font:400 16px/20px "Inter",sans-serif;margin:0}.background-header{position:fixed;top:0;right:0;left:0;width:100%;height:60px;background-color:#111A;z-index:2}header{top:0;padding:10px;font-weight:600;position:fixed;width:100%;backdrop-filter:blur(48px);z-index:3}main{margin:auto;max-width:600px;width:100%;min-height:calc(100% - 120px);margin-top:60px}.background-footer{position:fixed;bottom:0;right:0;left:0;width:100%;height:60px;background-color:#111A;z-index:2}footer{bottom:0;padding:10px;font-size:12px;line-height:14px;position:fixed;width:100%;backdrop-filter:blur(48px);z-index:3}#logo{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:solid 2px #CC2941;border-radius:30px;font-size:12px;line-height:14px;float:left;margin:0;user-select:none;background:#111;color:#fff}#name{display:flex;align-items:center;justify-content:center;width:calc(100% - 100px);height:40px;text-align:center;margin:0;text-transform:uppercase}#app{padding:90px 20px}#info{display:flex;align-items:center;justify-content:center;width:100%;height:40px;text-align:center;margin:0}.choices{padding-top:90px;margin:-10px}.choice{display:flex;align-items:center;justify-content:center;border-radius:15px;width:calc(100% - 20px);height:60px;border:solid 2px #CC2941;background:#CC2941;color:#fff;font:inherit;font-weight:600;cursor:pointer;margin:10px}.choice:hover{background:#111}img{display:block;border-radius:15px;overflow:hidden;width:100%}</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        const data = {
+            "version": "20.11.18.17",
+            "name": "Le son",
+            "quiz":
+            [
+                {
+                    "type": "information",
+                    "title": "À la découverte du son",
+                    "content": "Vous êtes-vous déjà demandé qu'est-ce que le son ? Comment fontionne-t-il ? Comment est-ce possible d'entendre un bruit ? Vous allez enfin comprendre le fonctionnement d'un des phénomènes scientifiques les plus anodins et pourtant pas si simples. Êtes-vous prêts à partir à la découverte du son ?",
+                    "choices":
+                    [
+                        {
+                            "name": "C'est parti"
+                        }
+                    ]
+                },
+                {
+                    "type": "question",
+                    "question": "Selon vous, le son, de quoi s'agit-il physiquement ?",
+                    "explanation": "Un son est tout simplement une onde correspondant à la propagation de perturbations mécaniques dans un milieu élastique. Plus simplement, une onde sonore est créée par une vibration résultant de perturbations dans la matière.<br /><br /><img src='https://upload.wikimedia.org/wikipedia/commons/8/82/Spherical_pressure_waves.gif' /><br /><br />Ces perturbations sont perçues, entre autres, par l'oreille humaine qui les interprète comme des sons.",
+                    "choices":
+                    [
+                        {
+                            "name": "Une onde",
+                            "valid": true,
+                            "response": "Bonne réponse"
+                        },
+                        {
+                            "name": "Un proton",
+                            "valid": false,
+                            "response": "Faux",
+                            "details": "Un proton est une particule subatomique portant une charge électrique positive."
+                        },
+                        {
+                            "name": "Une molécule",
+                            "valid": false,
+                            "response": "Faux",
+                            "details": "Une molécule est une structure de base de la matière."
+                        },
+                        {
+                            "name": "Une formule quantique",
+                            "valid": false,
+                            "response": "Pas du tout",
+                            "details": "Rien à voir: il s'agit là d'études physiques décrivant le comportement des atomes et des particules."
+                        }
+                    ]
+                },
+                {
+                    "type": "information",
+                    "title": "Acoustique",
+                    "content": "L'acoustique est la science du son. Elle est utilisée dans de nombreux domaines : sciences de la terre et de l'atmosphère, sciences de l'ingénieur, sciences de la vie et de la santé, sciences humaines et sociales.<br /><br />Nous allons ici nous concentrer sur l'acoustique humaine, qui est une branche de l'acoustique physique, se limitant aux perceptions humaines.",
+                    "choices":
+                    [
+                        {
+                            "name": "Compris"
+                        }
+                    ]
+                },
+                {
+                    "type": "question",
+                    "question": "Comment ces ondes sont-elles produites ?",
+                    "content": "Comme vous l'avez appris, un son est une onde créée par une vibration. Mais comment se forme-t-elle ?",
+                    "explanation": "Lorsqu'un objet vibre, il pousse contre l'air ambiant. Les vibrations entraînent la détente (appelée raréfaction) et la compression de l'air. Cela provoque des zones de haute et de basse pression, à mesure que le son s'approche du récepteur, sous la forme d'ondes.<br /><br /><img src='https://parlonssciences.ca/sites/default/files/styles/x_large/public/2020-01/Ondes_sonores_et_particules.png' />",
+                    "choices":
+                    [
+                        {
+                            "name": "Les charges électriques des particules changent",
+                            "valid": false,
+                            "response": "Incorrect",
+                            "details": "Aucune charge électique n'est altérée directement par le phénomène."
+                        },
+                        {
+                            "name": "La température du milieu est altéré sur une zone en particulier",
+                            "valid": false,
+                            "response": "Pas tout à fait",
+                            "details": "La température n'agit que sur la vitesse de propagation."
+                        },
+                        {
+                            "name": "Les molécules sont poussées les unes contre les autres",
+                            "valid": true,
+                            "response": "Absolument"
+                        },
+                        {
+                            "name": "Un fluide est créé dans le milieu et traverse ce dernier",
+                            "valid": false,
+                            "response": "Mauvaise réponse",
+                            "details": "Aucun élément n'est créé dans le processus !"
+                        }
+                    ]
+                },
+                {
+                    "type": "question",
+                    "question": "Comment la hauteur du son est-elle définie ?",
+                    "content": "Une onde parvient au récepteur, autrement dit la même vibration est recréée en sens inverse. Mais comment percevoir différents sons et différentes notes, en l'occurence, la hauteur (grave ou aiguë) du son ?",
+                    "explanation": "La fréquence (qui correspond à l'inverse de la longueur d'onde) détermine la hauteur tonale du son. Elle est mesurée en hertz (Hz). Les sons graves ont une fréquence basse et les sons aigus ont une fréquence élevée.<br /><br /><img src='https://parlonssciences.ca/sites/default/files/styles/width_800px/public/2020-01/Hauteur_tonale_et_fr%C3%A9quence.png' /><br /><br />Par exemple, imaginons une note très profonde – une qui viendrait d'une guitare basse ou d'une touche à l'extrémité inférieure d'un piano. Cette note a une basse fréquence. Ça veut dire qu'elle est grave. Maintenant, imaginons une note très claire - une qui viendrait d'un violon ou de l'extrémité supérieure d'un piano. Cette note claire a une fréquence élevée. Ça veut dire qu'elle est aiguë.",
+                    "choices":
+                    [
+                        {
+                            "name": "Grâce à la vitesse de propagation de l'onde",
+                            "valid": false,
+                            "response": "Faux",
+                            "details": "La vitesse de propagation n'influe pas sur le son perçu, mais sur la vitesse de propagation."
+                        },
+                        {
+                            "name": "Grâce à la fréquence de l'onde",
+                            "valid": true,
+                            "response": "Tout à fait",
+                            "details": "La réponse \"longueur d'onde\" était aussi correcte, fréquence et longueur d'ondes étant liées."
+                        },
+                        {
+                            "name": "Grâce à la longueur d'onde",
+                            "valid": true,
+                            "response": "Tout à fait",
+                            "details": "La réponse \"fréquence de l'onde\" était aussi correcte, fréquence et longueur d'ondes étant liées."
+                        },
+                        {
+                            "name": "Selon la matière dans laquelle elle est créée",
+                            "valid": false,
+                            "response": "C'est incorrect",
+                            "details": "Cela impliquerait par exemple que tout humain, évoluant dans l'air, ne pourrait créer qu'une seule hauteur de son. Adieu le chant."
+                        }
+                    ]
+                },
+                {
+                    "type": "information",
+                    "title": "Fréquences inaudibles",
+                    "content": "Les fréquences trop basses pour être entendues par des humains (inférieures à 20 Hz) sont appelées infrasons. Les fréquences trop élevées que nous ne pouvons pas entendre (supérieures à 20 000 Hz) sont appelées ultrasons.<br /><br />La plupart des chiens peuvent entendre des sons entre 65 Hz et 45 000 Hz. Les sifflets pour chiens ont des fréquences très élevées. Quand on souffle dans l'un d'eux, les chiens deviennent fous, mais les gens n'entendent rien.",
+                    "choices":
+                    [
+                        {
+                            "name": "Compris"
+                        }
+                    ]
+                },
+                {
+                    "type": "question",
+                    "question": "Comment la puissance sonore est-elle définie ?",
+                    "content": "Une onde parvient au récepteur, autrement dit la même vibration est recréée en sens inverse. Mais comment percevoir différents sons et différentes notes, en l'occurence, la puissance sonore (sonie) ?",
+                    "explanation": "L'amplitude détermine la puissance sonore d'un son. Elle est mesurée en décibels (dB). Elle fait référence à la taille ou à la hauteur d'une onde sonore. Le volume est directement lié à l'amplitude. Il fait référence à l'intensité d'une onde sonore.<br /><br /><img src='https://parlonssciences.ca/sites/default/files/styles/width_800px/public/2020-01/Amplitude_sons_calme_et_fort.png?itok=56hQVRzh' /><br /><br />Par exemple, concernant une guitare, plus une corde est pincée fort, plus le son produit sera puissant, et inversement. L'énergie fournie à la vibration est proprotionnelle à l'amplitude de l'onde qui en découle.",
+                    "choices":
+                    [
+                        {
+                            "name": "Grâce à la température de la matière",
+                            "valid": false,
+                            "response": "Ce n'est pas la bonne réponse",
+                            "details": "La température de la matière n'influe pas sur le son perçu, mais sur la vitesse de propagation."
+                        },
+                        {
+                            "name": "Selon la matière dans laquelle est est créée",
+                            "valid": false,
+                            "response": "C'est incorrect",
+                            "details": "Si tel était le cas, on ne pourrait ni chuchotter, ni crier. Chaque son aurait la même puissance."
+                        },
+                        {
+                            "name": "Grâce à la vitesse de propagation de l'onde",
+                            "valid": false,
+                            "response": "Faux",
+                            "details": "La vitesse de propagation n'influe pas sur le son perçu, mais sur la vitesse de propagation."
+                        },
+                        {
+                            "name": "Grâce à l'amplitude de l'onde",
+                            "valid": true,
+                            "response": "Tout à fait"
+                        }
+                    ]
+                },
+                {
+                    "type": "information",
+                    "title": "Comment le timbre du son est-il défini ?",
+                    "content": "On peut distinguer une voix, d'une guitare d'un piano, etc... Comment est-ce possible ?<br /><br />Le timbre du son est lié à la forme de l'onde. Les ondes sonores ne se représentent généralement pas à l'aide de sinusoïdes parfaites.",
+                    "choices":
+                    [
+                        {
+                            "name": "Compris"
+                        }
+                    ]
+                },
+                {
+                    "type": "information",
+                    "title": "Célérité",
+                    "content": "La vitesse du son dépend de la nature, de la température et de la pression du milieu dans lequel l'onde acoustique se propage.<br /><br />Dans les conditions normales de température et de pression, la vitesse du son dans l'air est d'environ 340 m.s-1. Dans l'eau, elle est près de cinq fois plus élevée.",
+                    "choices":
+                    [
+                        {
+                            "name": "Compris"
+                        }
+                    ]
+                },
+                {
+                    "type": "question",
+                    "question": "Qu'est-ce que le mur du son ?",
+                    "explanation": "Lorsqu'un objet se déplace plus vite que le son dans un milieu donné, on dit qu'il franchit le mur du son. Pour qu'un avion franchisse le mur du son, il doit, dépasser la vitesse de 1200 km/h environ.<br /><br /><img src='https://i0.wp.com/www.vol-avion-chasse.com/wp-content/uploads/2017/02/murduson2.jpg' /><br /><br />Quand l'avion atteint la vitesse du son, les ondes sonores s'accumulent à l'avant. C'est une onde de choc, provoquant un bruit bref et puissant pour un observateur au sol. Si la vitesse augmente encore, devenant supersonique, cette onde de choc, moins rapide que l'avion, se propagera derrière lui. Le « bang » sera entendu après le passage de l'avion.",
+                    "choices":
+                    [
+                        
+                        {
+                            "name": "La vitesse maximale de propagation d'une onde sonore dans l'air",
+                            "valid": false,
+                            "response": "Çà n'est pas la bonne réponse",
+                            "details": "Il n'y pas de vitesse maximale théorique de propagation d'une onde en général."
+                        },
+                        {
+                            "name": "La vitesse à partir de laquelle un avion en l'air est considéré comme en décrochage",
+                            "valid": false,
+                            "response": "C'est faux",
+                            "details": "Le décrochage correspond à la perte de portance de l'avion lorsque l'angle d'incidence est trop élevé, c'est-à-dire lorsque l'avion monte trop radicalement et qu'il n'y a plus assez d'air sous les ailes pour le soulever. Il n'y a donc aucun rapport avec le son."
+                        },
+                        {
+                            "name": "Le nombre maximal de sons simultanés qu'il est possible d'entendre dans l'air",
+                            "valid": false,
+                            "response": "Incorrect",
+                            "details": "Un tel nombre n'existe pas, mais bien sûr, trop de sons simultanés ne formeront qu'une masse de sons indistingables, voire désagréables."
+                        },
+                        {
+                            "name": "Un phénomène caractérisé par l'atteinte de la vitesse du son dans l'air",
+                            "valid": true,
+                            "response": "Parfait"
+                        }
+                    ]
+                },
+                {
+                    "type": "information",
+                    "title": "Mission terminée",
+                    "content": "Vous devriez désormais avoir compris le fonctionnement du phénomène de propagation du son. J'espère que vous aurez apprécié. À bientôt !"
+                }
+            ]
+        };
+    </script>
+    <script>
+        const VALID_POINTS = 5;
+        let app, quiz;
+
+        class Quiz
+        {
+            #data;
+            #idx;
+            #score;
+
+            constructor(data)
+            {
+                this.#data = data;
+                this.#idx = 0;
+                this.#score = 0;
+
+                $("#name").append(data.name);
+                $("#info").prepend("Version " + data.version + "<br />");
+
+                this.load();
+            }
+
+            get score()
+            {
+                return this.#score;
+            }
+
+            load()
+            {
+                let cur = this.#data.quiz[this.#idx];
+                console.log("Load: ", cur);
+
+                if (cur.title)
+                    app.append($("<h3 class='title'>" + cur.title + "</h3>"));
+
+                if (cur.question)
+                    app.append($("<h3 class='question'>" + cur.question + "</h3>"));
+
+                if (cur.content)
+                    app.append($("<p class='content'>" + cur.content + "</p>"));
+                
+                if (cur.image)
+                   app.append($("<img src='" + cur.image + "' />"));
+
+                if (this.#idx === this.#data.quiz.length - 1)
+                    app.append($("<h3 class='score'>" + this.#score + " points</h3>"));
+
+                if (cur.choices)
+                {
+                    let choices = $("<div class='choices'></div>");
+                    app.append(choices);
+                    cur.choices.forEach(function (c, i)
+                    {
+                        let choice = $("<button id='choice_" + i + "' class='choice'>" + c.name + "</button>");
+                        choice.click(function () { quiz.next(i); });
+                        choices.append(choice);
+                    });
+                }
+            }
+
+            response(i)
+            {
+                let cur = this.#data.quiz[this.#idx];
+                console.log("Response: ", cur, ", i =", i);
+                
+                if (cur.choices[i].response)
+                    app.append($("<h3 class='response'>" + cur.choices[i].response + "</h3>"));
+
+                if (cur.explanation && cur.choices[i].details)
+                    app.append($("<p class='content'>" + cur.choices[i].details + "<br /><br />" + cur.explanation + "</p>"));
+                else if (cur.explanation)
+                    app.append($("<p class='content'>" + cur.explanation + "</p>"));
+                    
+                let choices = $("<div class='choices'></div>");
+                app.append(choices);
+                    
+                let choice = $("<button id='choice_0' class='choice'>Continuer</button>");
+                choice.click(function () { quiz.next(0, true); });
+                choices.append(choice);
+            }
+
+            next(i, responded = false)
+            {
+                let cur = this.#data.quiz[this.#idx];
+                console.log("Next: ", cur, ", i =", i);
+                
+                app.empty();
+
+                if (cur.type === "question" && !responded)
+                {
+                    if (cur.choices[i].valid)
+                        this.#score += VALID_POINTS;
+                    this.response(i);
+                }
+                        
+                if ((cur.type === "question" && responded) || cur.type === "information")
+                {
+                    ++this.#idx;
+                    this.load();
+                }
+            }
+        }
+
+        $(document).ready(function ()
+        {
+            app = $("#app");
+            quiz = new Quiz(data);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="background-header"></div>
+    <header>
+        <a href="https://profuder.com">
+            <h1 id="logo">KYF</h1>
+        </a>
+        <h2 id="name"></h2>
+    </header>
+
+    <main>
+        <div id="app"></div>
+    </main>
+
+    <div class="background-footer"></div>
+    <footer>
+        <p id="info">© 2020 Bastien Soucasse • Tous droits réservés</p>
+    </footer>
+</body>
+
+</html>
